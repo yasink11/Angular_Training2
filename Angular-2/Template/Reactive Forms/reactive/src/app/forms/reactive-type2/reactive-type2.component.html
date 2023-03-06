@@ -1,0 +1,74 @@
+<div class="row">
+  <div class="col-md-8 offset-md-2">
+    <h2>Giriş Reactive Type 2</h2>
+    <form [formGroup]="loginForm" (ngSubmit)="signin()">
+
+      <div class="mb-3">
+        <label for="userName" class="form-label">UserName</label>
+        <input class="form-control" type="text" formControlName="userName">
+      </div>
+      <div class="alert alert-danger"
+      *ngIf="isInValidMessageShow('userName')">
+      <small *ngIf="loginForm.get('userName')?.errors?.['required']"> Kullanıcı adı alanı zorunludur</small>
+      </div>
+      <div class="alert alert-info">
+        <ul>
+          <li>Valid : {{loginForm.get("userName")?.valid}}</li>
+          <li>Invalid : {{loginForm.get("userName")?.invalid}}</li>
+          <li>Errors : {{loginForm.get("userName")?.errors | json}}</li>
+          <li>Dirty : {{loginForm.get("userName")?.dirty}}</li>
+          <li>Pristine : {{loginForm.get("userName")?.pristine}}</li>
+          <li>Touched : {{loginForm.get("userName")?.touched}}</li>
+          <li>Untouched : {{loginForm.get("userName")?.untouched}}</li>
+          <li>Value: {{loginForm.get("userName")?.value}}</li>
+        </ul>
+      </div>
+
+
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input class="form-control" type="password" formControlName="password">
+      </div>
+
+      <div class="alert alert-danger"
+      *ngIf="isInValidMessageShow('password')">
+      <small *ngIf="loginForm.get('password')?.errors?.['required']">Şifre alanı zorunludur.</small>
+      <small *ngIf="loginForm.get('password')?.errors?.['minlength']">Şifre alanı en 4 karakter olmalıdır.</small>
+      </div>
+
+
+<div class="alert alert-info">
+  <ul>
+    <li>Valid : {{loginForm.get("password")?.valid}}</li>
+    <li>Invalid : {{loginForm.get("password")?.invalid}}</li>
+    <li>Errors : {{loginForm.get("password")?.errors | json}}</li>
+    <li>Dirty : {{loginForm.get("password")?.dirty}}</li>
+    <li>Pristine : {{loginForm.get("password")?.pristine}}</li>
+    <li>Touched : {{loginForm.get("password")?.touched}}</li>
+    <li>Untouched : {{loginForm.get("password")?.untouched}}</li>
+    <li>Value: {{loginForm.get("password")?.value}}</li>
+  </ul>
+</div>
+
+
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" formControlName="rememberMe">
+        <label class="form-check-label" for="flexCheckDefault">
+          Beni hatırla
+        </label>
+      </div>
+      <label for="form-label" for="country">Ülke:</label>
+      <select class="form-select" formControlName="country">
+        <option *ngFor="let item of countryMenu" value="{{item.value}}">{{item.text}}</option>
+      </select>
+      <button class="btn btn-primary">Giriş</button>
+      <div *ngFor="let item of genderMenu">
+        <div class="form-check">
+          <input formControlName="gender" class="form-check-input" type="radio" [value]="item.value">
+          <label class="form-check-label" for="flexRadioDefault1">{{item.text}}
+          </label>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
