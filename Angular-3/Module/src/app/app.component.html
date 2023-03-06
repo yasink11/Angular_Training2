@@ -1,0 +1,10 @@
+<router-outlet></router-outlet>
+<ul>
+  <li> <a routerLink="/anasayfa">Ana sayfa</a></li>
+  <li><a routerLink="/birincisayfa" [queryParams]="{page:2,pageSize:1}">Birinci sayfa</a></li>
+  <li> <a routerLink="/ikincisayfa/2">İkinci sayfa</a></li>
+  <li> <a [routerLink]="['ikincisayfa',2]">İkinci sayfa</a></li>
+</ul>
+<hr>
+Sayfalar
+<router-outlet></router-outlet>
